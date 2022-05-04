@@ -1,0 +1,561 @@
+/*Sfondo generale e bordo dell'intera pagina'*/
+body{
+    font-family: "Calibri" !important;
+}
+body .wrapper{ 
+    background-color: rgb(245, 245, 245);
+    border: 0px;
+}
+
+.scheda{
+    border-radius: 0px;
+    background-color: white;
+}
+/*JQUERY UI INIZIO*/
+.ui-widget {
+    font-family: "Calibri" !important;
+}
+
+.ui-state-default{
+    background-color: #F8F8F8 !important;
+    border: 0px !important;
+    
+}
+
+.ui-widget-header{
+    background-color: white;
+}
+/*JQUERY UI FINE*/
+
+
+
+
+/*JQUERY UI TABS*/
+.ui-tabs-anchor{
+    color: rgb(129, 52, 47) !important;
+}
+.ui-tabs .ui-tabs-panel{
+    background-color: white !important;
+}
+
+.ui-tabs .ui-tabs-nav{
+    border-bottom: 1px solid #dedede !important;
+}
+
+.ui-tabs .ui-tabs-nav .ui-corner-top{
+  border-top: 1px solid #dedede !important;
+  border-left: 1px solid #dedede !important;
+  border-right: 1px solid #dedede !important;
+  background-color: #F1F1F1 !important;
+}
+
+.ui-tabs .ui-tabs-nav .ui-corner-top.ui-tabs-active{
+    border-bottom: 1px solid rgb(129, 52, 47) !important;
+    background-color: #f8f8f8 !important;
+}
+
+
+
+
+
+/*JQUERY DATATABLE TABELLA RISULTATI INIZIO*/
+.datatable .sorting{
+    border-left:1px solid #dedede !important;
+    background-color: #707070 !important;
+}
+
+.DataTables_sort_wrapper{
+    color: white !important;
+}
+
+.custom-table td {
+        color: #555;
+}
+
+tr.odd,tr.odd td,tr.odd td.sorting_1 {
+    background-color: #FFFFFF ;
+    border-bottom: 1px solid #D0D0D0;
+    border-left: 1px solid #D0D0D0;
+    height: 40px;
+    overflow: hidden;
+}
+
+tr.even,tr.even td,tr.even td.sorting_1 {
+    background-color: #F9F9F9 ;
+    border-bottom: 1px solid #D0D0D0;
+    border-left: 1px solid #D0D0D0;
+    height: 40px;
+    overflow: hidden;
+}   
+
+tr.even:hover td{
+    color: black !important;
+    background-color: #8DB3E2 !important ;
+}
+
+tr.odd:hover td {
+    color: black !important;
+    background-color: #8DB3E2 !important ;
+}
+
+.DTTT_selected td{
+    color: white !important;
+    background-color: #17365D !important;
+}
+
+tr.odd.DTTT_selected:hover td{
+    color: white !important;
+    background-color: #17365D !important;
+}
+tr.even.DTTT_selected:hover td{
+    color: white !important;
+    background-color: #17365D !important;
+}
+
+.paging_full_numbers .ui-button {
+    border: 1px solid #dedede !important;
+    color: #333 !important;
+}
+
+
+
+
+/*POPUP*/
+.popup { 
+    background-color:white;
+    border-radius:15px;
+    color:#000;
+}
+
+/*HEADER*/
+.header{
+    background-color: #f8f8f8;
+}
+
+#menu_pulsanti .btn_fa{
+    color:#606060 !important;
+    background-color: none !important;
+    border: none !important;
+}
+#menu_pulsanti .btn_menu_custom{
+    color: rgb(129, 52, 47) !important;
+    border: none !important;
+}
+#avatar{
+    display: none;
+}
+
+#menu_description{
+    display: none;
+}
+/*TABLES - TABLE*/
+.table_container{
+    padding: 14px;
+}
+/*TABLES - TABLE*/
+
+/*FIELD - CAMPI*/
+
+
+
+
+.fieldcontainer_edit.first{
+    border-top:1px solid #A6A6A6;
+}
+
+.fieldcontainer_edit{
+    background-color: #F2F2F2;
+    border-bottom:1px solid #A6A6A6;
+    border-right:1px solid #A6A6A6;
+    border-left:1px solid #A6A6A6;
+}
+
+.fieldcontainer_edit:hover{
+    background-color: #8DB3E2;
+}
+.fieldcontainer_edit:hover > .fieldLabel{
+    color: black;
+}
+.fieldcontainer_edit:hover > .fieldContent{
+    background-color: white;
+}
+
+.fieldcontainer_edit .fieldLabel{
+    color: rgb(129, 52, 47);
+    font-weight: bold;
+}
+
+.fieldcontainer_edit .fieldContent{
+    border-left: 1px solid #A6A6A6;
+    background-color: white;
+}
+
+.fieldcontainer_edit .fieldValueContainer{
+    margin-left: 0px;
+    border: 0px solid #AAAAAA; 
+    border-radius: 0px;
+}
+
+.fieldcontainer_edit .field{
+    border-radius: 0px;
+}
+
+.fieldcontainer .fa{
+    color: #467bbd;
+}
+
+.fieldcontainer_view .fieldContent{
+}
+
+
+.fieldValueContainer{
+    background-color: white;
+}
+
+.fieldcontainer_view.first{
+    border-top:1px solid #A6A6A6;
+}
+
+.fieldcontainer_view{
+    background-color: #F2F2F2;
+    border-bottom:1px solid #A6A6A6;
+    border-right:1px solid #A6A6A6;
+    border-left:1px solid #A6A6A6;
+}
+
+.fieldcontainer_view .fieldLabel{
+    font-weight: bold;
+    color: #17365D;
+    text-align: center;
+}
+
+.fieldcontainer_view .fieldContent{
+    border-left: 1px solid #A6A6A6;
+    background-color: white;
+}
+
+.fieldDivisore{
+    border-left: 1px solid #aaaaaa;
+}
+
+.fieldconnector{
+    color: #467bbd;
+}
+
+
+/*ALLEGATI*/
+.file_container{
+    border-bottom: 1px solid #9A9A9A;
+    border-top: 1px solid #9A9A9A;
+}
+
+.allegato_selected{
+    border: 2px solid #54b1e4 !important;
+}
+
+.file_menu{
+    border-bottom: 1px solid #aaaaaa !important;
+    background-color: #EAEAEA;
+}
+
+.minithumb{
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.thumb{
+    background-color: white;
+}
+
+.originalname{
+    font-weight: normal;
+}
+
+
+/*LABEL DATI*/
+
+
+/*JQUERY UI ACCORDION - LABEL*/
+
+.ui-accordion-header.ui-state-default{
+   background-color: white !important;
+}
+.ui-accordion-header.ui-state-default:hover{
+    background-color:#8DB3E2 !important;
+}
+.ui-accordion-header span{
+    color: black !important;
+}
+
+.ui-accordion-header .label_icona{
+    background-color: rgb(129, 52, 47);
+    height: 15px;
+    margin-right: 5px;
+    margin-top: 3px;
+    width: 15px;
+}
+
+.label_title{
+    color: black !important;
+    text-transform: uppercase;
+}
+
+.label_vuota .label_title{
+    color: #9F9F9F !important;
+}
+
+.label_vuota .label_icona{
+    background-color: #9F9F9F !important;
+}
+
+/*MENU SCHEDA INIZIO*/
+.menu_big{
+    border-radius: 0px;
+    background-color: white !important;
+}
+
+.menu_mid{
+    color: rgb(129, 52, 47);
+    font-weight: bold;
+    background-color: white !important;
+}
+
+/*menu top*/
+.scheda .menu_top{
+    border-bottom: 0px;
+}
+
+/*menu bottom*/
+.scheda .menu_bottom{
+    border-top: 0px;
+}
+
+.menu_small{
+    color: rgb(129, 52, 47);
+}
+/*MENU SCHEDA FINE*/
+
+
+/*CODE INIZIO*/
+.lista_code{
+    border: 2px solid #54b1e4 !important;
+    color: #467bbd;
+    border-radius: 5px !important;
+}
+/*CODE FINE*/
+
+
+/*ESPORTA RISULTATI*/
+#esporta_risultati { 
+    background-color:#fff;
+    border-radius:15px;
+    color:#000;
+}
+
+
+.report table {
+   border: 1px solid #dedede;
+}
+.report tr{
+    border-bottom: 1px solid #dedede;
+}
+
+#tables-vendite-insert-t_1-fields-tutti-container{
+    border-bottom: 1px solid #dedede !important; 
+}
+
+.manuale img{
+    border: 1px solid #467bbd;
+}
+.manuale h1{
+    color:#467bbd;
+}
+.manuale h2{
+    color:#467bbd;
+}
+
+.manuale h3{
+    color:#467bbd;
+}
+
+.manuale h4{
+    color:#467bbd;
+}
+
+
+/*BOTTONI - PULSANTI INIZIO*/
+.btn_scritta{
+    border: 1px solid black;
+    border-radius: 0px;
+    background-color: none;
+    color:black;
+}
+
+.btn_scritta:hover{
+    background-color: none;
+    border-color: none;
+    color: rgb(129, 52, 47);
+}
+
+.btn_fa{
+    border: none;
+    background-color: none;
+    color: black;
+}
+
+.btn_fa:hover{
+    background-color: none;
+    color: rgb(129, 52, 47);
+    border: none;
+}
+
+
+.fa-trash-o{
+    color: #e01e1e !important;
+}
+
+.fa-times{
+    color: black !important;
+}
+
+.fa-pencil{
+    color: black !important;
+}
+
+.fa-floppy-o{
+    color: #339232 !important;
+}
+
+.fa-thumb-tack{
+    color: black;
+}
+
+
+.btn_plus_right{
+    background-color: #DCEBF9;
+    border: 1px solid #54b1e4;
+    border-radius: 2px;
+    height: 16px;
+    width: 25px;
+    cursor: pointer;
+}
+.plus_right{
+    background-color: #c6fbc6;
+    border-left: 1px solid #54b1e4;
+    color: black;
+    font-weight: normal;
+    height: 16px;
+    line-height: 16px;
+    margin-left: 11px;
+    width: calc(100% - 14px);
+    padding-left: 2px;
+    font-weight: bold;
+}
+
+
+
+.btn_plus_bottom{
+    background-color: #DCEBF9;
+    border: 1px solid #54b1e4;
+    padding: 1px;
+    padding-bottom: 0px;
+    width:25px;
+    height: 14px;
+    cursor: pointer;
+}
+
+.plus_bottom{
+    border: 1px solid #54b1e4;
+    background-color: #c6fbc6;
+    border-bottom: none;
+    height: 8px;
+    line-height: 8px;
+    margin-top: 5px;
+    text-align: center;
+    color:black;
+    font-weight: bold;
+}
+
+.btn_plus_popup{
+    background-color: #DCEBF9;
+    border: 1px solid #54b1e4;
+    padding: 1px;
+    width:25px;
+    height: 14px;
+    cursor: pointer;
+}
+
+.plus_popup{
+    background-color: #c6fbc6;
+    border: 1px solid #54b1e4;
+    height: 10px;
+    line-height: 10px;
+    margin-top: 1px;
+    text-align: center;
+    color:black;
+    font-weight: bold;
+}
+
+.btn_open_right{
+    background-color: #DCEBF9;
+    border: 1px solid #54b1e4;
+    border-radius: 2px;
+    height: 16px;
+    width: 25px;
+    cursor: pointer;
+}
+.open_right{
+    background-color: #D7F1FF;
+    border-left: 1px solid #54b1e4;
+    color: black;
+    font-weight: normal;
+    height: 16px;
+    line-height: 16px;
+    margin-left: 11px;
+    width: calc(100% - 14px);
+    padding-left: 2px;
+    font-weight: bold;
+}
+
+.btn_open_popup{
+    background-color: #DCEBF9;
+    border: 1px solid #54b1e4;
+    padding: 1px;
+    width:14px;
+    height: 14px;
+    cursor: pointer;
+}
+
+.open_popup{
+    background-color: #D7F1FF;
+    border: 1px solid #54b1e4;
+    height: 10px;
+    line-height: 10px;
+    margin-top: 1px;
+    text-align: center;
+    color:black;
+    font-weight: bold;
+}
+
+.btn_custom{
+    background-color: #DCEBF9;
+    border: 1px solid #54b1e4;
+}
+
+.btn_custom:hover{
+    background-color: #9bd3f1;
+    border-color: #005887;
+}
+
+/*REPORT INZIO*/
+.report{
+    
+    border: 1px solid rgb(129, 52, 47);;
+}
+/*REPORT FINE*/
+
+/*CUSTOM WORK&WORK INIZIO*/
+.new_records .label_title{
+    color: red !important;
+}
+/*CUSTOM WORK&WORK FINE*/

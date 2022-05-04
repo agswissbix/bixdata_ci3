@@ -1,0 +1,134 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/WsManager" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/WsManager">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/WsManager">
+            <element name="CustomerInsertUpdate">
+                <complexType>
+                    <sequence>
+                        <element minOccurs="1" maxOccurs="1" name="pNo" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="pName" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="pName2" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="pAddress" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="pAddress2" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="pPostCode" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="pCity" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="pCounty" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="pCountryRegion" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="pMail" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="pContact" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="pPhoneNo" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="pTelexNo" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="pFaxNo" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="pVatRegNo" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="pBlocked" type="boolean"/>
+                        <element minOccurs="1" maxOccurs="1" name="pCustomerModel" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="returnCustNo" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="CustomerInsertUpdate_Result">
+                <complexType>
+                    <sequence>
+                        <element minOccurs="1" maxOccurs="1" name="returnCustNo" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="InsertCopy">
+                <complexType>
+                    <sequence>
+                        <element minOccurs="1" maxOccurs="1" name="serialNo" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="copyType" type="string"/>
+                        <element minOccurs="1" maxOccurs="1" name="copyToInvoice" type="decimal"/>
+                        <element minOccurs="1" maxOccurs="1" name="copyOld" type="decimal"/>
+                        <element minOccurs="1" maxOccurs="1" name="copyNew" type="decimal"/>
+                        <element minOccurs="1" maxOccurs="1" name="dateFrom" type="date"/>
+                        <element minOccurs="1" maxOccurs="1" name="dateTo" type="date"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="InsertCopy_Result">
+                <complexType>
+                    <sequence/>
+                </complexType>
+            </element>
+            <element name="TestWS">
+                <complexType>
+                    <sequence/>
+                </complexType>
+            </element>
+            <element name="TestWS_Result">
+                <complexType>
+                    <sequence>
+                        <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </types>
+    <message name="CustomerInsertUpdate">
+        <part name="parameters" element="tns:CustomerInsertUpdate"/>
+    </message>
+    <message name="CustomerInsertUpdate_Result">
+        <part name="parameters" element="tns:CustomerInsertUpdate_Result"/>
+    </message>
+    <message name="InsertCopy">
+        <part name="parameters" element="tns:InsertCopy"/>
+    </message>
+    <message name="InsertCopy_Result">
+        <part name="parameters" element="tns:InsertCopy_Result"/>
+    </message>
+    <message name="TestWS">
+        <part name="parameters" element="tns:TestWS"/>
+    </message>
+    <message name="TestWS_Result">
+        <part name="parameters" element="tns:TestWS_Result"/>
+    </message>
+    <portType name="WsManager_Port">
+        <operation name="CustomerInsertUpdate">
+            <input name="CustomerInsertUpdate" message="tns:CustomerInsertUpdate"/>
+            <output name="CustomerInsertUpdate_Result" message="tns:CustomerInsertUpdate_Result"/>
+        </operation>
+        <operation name="InsertCopy">
+            <input name="InsertCopy" message="tns:InsertCopy"/>
+            <output name="InsertCopy_Result" message="tns:InsertCopy_Result"/>
+        </operation>
+        <operation name="TestWS">
+            <input name="TestWS" message="tns:TestWS"/>
+            <output name="TestWS_Result" message="tns:TestWS_Result"/>
+        </operation>
+    </portType>
+    <binding name="WsManager_Binding" type="tns:WsManager_Port">
+        <binding xmlns="http://schemas.xmlsoap.org/wsdl/soap/" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="CustomerInsertUpdate">
+            <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WsManager:CustomerInsertUpdate" style="document"/>
+            <input name="CustomerInsertUpdate">
+                <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+            </input>
+            <output name="CustomerInsertUpdate_Result">
+                <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+            </output>
+        </operation>
+        <operation name="InsertCopy">
+            <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WsManager:InsertCopy" style="document"/>
+            <input name="InsertCopy">
+                <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+            </input>
+            <output name="InsertCopy_Result">
+                <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+            </output>
+        </operation>
+        <operation name="TestWS">
+            <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WsManager:TestWS" style="document"/>
+            <input name="TestWS">
+                <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+            </input>
+            <output name="TestWS_Result">
+                <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="WsManager">
+        <port name="WsManager_Port" binding="tns:WsManager_Binding">
+            <address xmlns="http://schemas.xmlsoap.org/wsdl/soap/" location="http://dynamic1.aboutx.local:7047/DynamicsNAV90/WS/About-X/Codeunit/WsManager"/>
+        </port>
+    </service>
+</definitions>

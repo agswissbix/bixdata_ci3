@@ -1,0 +1,28 @@
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 0;  /* this affects the margin in the printer settings */
+}
+
+.print_fieldValueContainer{
+    -moz-appearance: none;
+    background-color: white !important;
+    border: 0 none;
+    color: black;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 1%;
+    width: 100%;
+    float: left;
+    width: 79%;
+}
+
+.print_page{
+    height: 296.9mm; 
+    width: 209.9mm;
+}
+
+.print_page_portrait{
+    width: 296.9mm;
+    height: 209.9mm;
+}

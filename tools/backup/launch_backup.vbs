@@ -1,0 +1,1 @@
+CreateObject("Wscript.Shell").Run "Backup.bat", 0, True

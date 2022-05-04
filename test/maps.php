@@ -1,0 +1,2 @@
+
+<img src="https://maps.googleapis.com/maps/api/staticmap?center=Italia,Inverigo, via Parini 11&zoom=15&size=640x400&markers=color:red%7CItalia,Inverigo, via Parini 11&key=AIzaSyCF8ykBXsHolbLlzp0oydQhArp0bpT1GzU"></img>

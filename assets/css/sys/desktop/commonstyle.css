@@ -1,0 +1,1230 @@
+
+/*GENERALI PAGINA*/
+* {
+    margin: 0;
+    outline: none;
+}
+a {
+	text-decoration:none;
+	color:#000;
+
+}
+li, li a {
+    color:#000; 
+    text-decoration:none;
+    
+}
+
+li:hover { 
+    position:relative;
+    z-index:2000; 
+} 
+select{
+    -webkit-appearance:none;
+    -moz-appearance:none;
+}
+
+body{
+    height: 100%;
+    margin: 0px;
+    font-family: Lato, sans-serif !important;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body .wrapper{ 
+    background-repeat: no-repeat;
+    background-position: center center;
+    height:100%;
+    width: 100%;
+}
+
+.content_container{
+    height: calc(100% - 60px);
+}
+.content{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.contentbody{
+    height: calc(100% - 5px);
+}
+
+.content_scheda_container{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    height: calc(100% - 80px);;
+    float: left;
+}
+
+.scheda{
+    height: calc(100% - 20px);
+    width: calc(100% - 20px);
+    padding: 10px;
+    position: relative;
+}
+
+.schedabody{
+   height: calc(100% - 25px);
+   overflow: hidden;
+}
+
+.schedabody_with_menu_bottom{
+   height: calc(100% - 60px);
+   overflow: hidden;
+}
+
+.block_content{
+    width: 98%;
+    height: 94%;
+    margin: auto;
+}
+
+.tables_container{
+    overflow: visible !important;
+}
+.table_container{
+    overflow: visible !important;
+    position: relative;
+}
+
+.table_menu{
+    float: left;
+}
+
+.table_container.records_linkedmaster{
+    padding: 0px;
+}
+
+.linkedmaster{
+    margin-left: 20px;
+}
+
+.fissi_record_linkedmaster{
+}
+
+.table_container.table_container_scheda{
+    padding: 0px;
+}
+
+.table_container.table_container_inserimento{
+    /*padding-top: 40px;*/
+}
+
+#tutti_tables_container .table_container{
+    padding-top: 0px;
+}
+
+#tutti_tables_container .fieldcontainer_edit{
+    border-top: 0px;
+}
+
+.block_dati_labels_container{
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    overflow-y: scroll;
+}
+  
+/*JQUERY UI*/
+
+.ui-widget {
+    font-family: Lato, sans-serif !important;
+}
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    font-family: Lato, sans-serif !important;
+}
+
+.ui-state-default{
+    background: none !important;
+    background-image: none !important;
+    border: none !important;
+    
+}
+
+.ui-state-focus{
+    background: none !important;
+    background-image: none !important;
+    border: none !important;
+}
+
+.ui-widget-header
+{
+    background-image: none;
+    background: none;
+}
+
+/*JQUERY UI TABS*/
+
+.ui-tabs .ui-tabs-panel{
+    padding: 0px !important;
+    background-color: none;
+    
+}
+
+.ui-tabs .ui-tabs-nav li{
+    border-bottom: 0px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.ui-tabs .ui-tabs-nav{
+    border: 0px !important;
+    
+}
+
+.ui-tabs .ui-tabs-nav .ui-corner-top {
+    height: 20px;
+    line-height: 10px;
+}
+
+
+/*JQUERY UI ACCORDION*/
+
+.ui-accordion-content{
+    padding: 0px !important;
+}
+
+.ui-button-text-only .ui-button-text {
+        padding: 0px;
+}
+
+.ui-accordion-header{
+    margin-top: 0px !important;
+}
+.ui-accordion-content {
+    border: 0px;
+}
+
+
+
+/*JQUERY DATATABLE INIZIO*/
+
+.dataTables_wrapper{
+    margin-top: -11px;
+}
+
+.DataTables_sort_wrapper{
+    overflow: hidden;
+    height: 16px;
+}
+
+.custom-table th {
+	padding: 4px;
+	text-align: left;
+	line-height: 1.3em;
+        font-weight: normal !important;
+}
+
+.custom-table td {
+	padding: 4px 4px 4px;
+	vertical-align: center;
+}
+
+.dataTables_info {
+	padding-top: 3px;
+        width: 50%;
+	float: left;
+}
+
+.dataTables_paginate .ui-button {
+	margin-right: -0.1em !important;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+}
+
+.dataTables_paginate {
+	width: auto;
+        float: right;
+	text-align: right;
+}
+
+.custom-table .table_container{
+    padding: 0px;
+}
+/* JQUERY DATATABLE FINE*/
+
+
+
+/*POPUP*/
+.popup { 
+    background-color: white;
+    position: fixed !important;
+    display: none;
+    padding:0px;
+    width:94% !important;
+    height: 90% !important ;
+    top: 4% !important;
+    left: 2% ;
+}
+
+#visualizzatore_popup{
+    top:1% !important;
+    width:96% !important;
+    height: 98% !important;
+        
+}
+
+.popup_30{
+    width: 30% !important;
+}
+.popup_40{
+    width: 40% !important;
+}
+.popup_45{
+    width: 45% !important;
+}
+.popup_50{
+    width: 50% !important;
+}
+.popup_55{
+    width: 55% !important;
+}
+.popup_60{
+    width: 60% !important;
+}
+.popup_65{
+    width: 65% !important;
+}
+
+.popup_90{
+    width: 90% !important;
+}
+.popup_standard_dati{
+    width: 50% !important;
+}
+
+.ui-helper-hidden-accessible{
+    z-index: 100;
+}
+/*HEADER*/
+
+#logo_header{
+    height: 50px;
+    margin: 5px;
+}
+
+#menu_pulsanti .btn_fa{
+    height: 44px;
+    width: 44px;
+    font-size: 35px !important;
+    line-height: 44px;
+}
+
+#menu_pulsanti .btn_material{
+    height: 44px;
+    width: 44px;
+    font-size: 44px !important;
+    line-height: 44px;
+}
+#menu_pulsanti .btn_material:hover{
+    cursor: pointer;
+}
+#menu_pulsanti .btn_material .material-icons{
+    height: 44px;
+    width: 44px;
+    font-size: 44px !important;
+    line-height: 44px;
+}
+
+#avatar{
+    height: 56px;
+    margin-right: 5px;
+}
+
+/*CONTENT LOGIN*/
+#accedi{
+    width: 60px;
+    margin: auto;
+}
+
+#login .blocco{
+    width: 300px;
+    margin: auto;
+}
+
+/*CONTENT HOME*/
+ #home_content
+  {
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+  }
+
+
+
+
+/*FIELD - CAMPI*/
+
+.fieldcontainer{
+        height: 26px;
+
+    /*height: 45px;*/
+}
+
+.fieldcontainer_memo {
+    height: 85px;
+}
+
+
+
+.fieldcontainer_edit:hover > .fieldContent > .fieldOptions{
+    visibility: visible !important;
+}
+
+.fieldcontainer_edit:hover > .fieldContent > .fieldValueContainer_edit > .fieldOptions{
+    visibility: visible !important;
+}
+
+.fieldLabel{
+    height: 100%;
+    line-height: 25px;
+}
+
+.fieldContent{
+    line-height: 25px;
+    height: 100%;
+}
+
+.fieldcontainer_edit .fieldLabel{
+    width: 192px;
+    float: left;
+    overflow: hidden;
+    text-align: right;
+    padding-right: 10px;
+    /*height: calc(100% - 10px);*/
+}
+.fieldcontainer_edit .fieldContent{
+    float: left;
+    width: calc(100% - 204px);
+}
+
+.fieldcontainer_edit .fieldValueContainer{
+    width: calc(100% - 80px);
+    float: left;
+    margin-left: 0px;
+    border: 0px;
+    border-radius: 0px;
+}
+
+
+.fieldcontainer_edit .fa{
+    font-size: 16px;
+    height: 27px;
+    line-height: 22px;
+    min-width: 20px;
+    
+}
+
+.fieldcontainer_view .fieldLabel{
+    width: 200px;
+    float: left;
+    overflow: hidden;
+    text-align: right;
+    padding-right: 2px;
+    /*height: calc(100% - 10px);*/
+}
+
+.fieldcontainer_view .fieldContent{
+    float: left;
+    width: calc(100% - 204px);
+}
+
+.fieldcontainer_view .fieldValueContainer{
+    width: calc(100% - 75px);
+    margin-left: 10px;
+    float: left;
+}
+
+
+.field{
+    height: 25px;
+    border: 0px;
+    width: 100%;
+    float: left;
+    padding: 5px;
+    box-shadow: none !important;
+}
+
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+/*campi con range: data, numeric inizio*/
+.fieldRange.fieldValue0{
+    width: calc(50% - 1px);
+}
+
+.fieldRange.fieldValue1{
+     width: calc(50% - 1px);
+}
+.fieldRange.fieldValue0.inserimento, .fieldRange.fieldValue0.modifica, .fieldRange.fieldValue0.scheda{
+    width: 100%;
+}
+
+.fieldRange.fieldValue1.inserimento, .fieldRange.fieldValue1.modifica, .fieldRange.fieldValue1.scheda{
+    display: none;
+}
+
+.fieldDivisore{
+    float: left;
+    line-height: 25px;
+    height: 25px;
+    width: 1px;
+}
+
+.fieldDivisore.inserimento, .fieldDivisore.modifica, .fieldDivisore.scheda{
+    display: none;
+}
+
+/*campi con range: data, numeric fine*/
+
+
+textarea.field{
+    height: 75px;
+    resize: vertical;
+}
+
+/*autocomplete come ad esempio il campo utenti inizio*/
+.ui-autocomplete {
+    max-height: 400px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    z-index: 2147483647;
+    /*width: calc(100% - 210px) !important;*/
+}
+
+
+.autocompleteSpan{
+    font-size: 100%;
+    cursor: pointer;
+}
+
+.autocomplete_icon_small{
+    height: 16px;
+    width: 16px;
+    margin-right: 5px;
+}
+/*autocomplete come ad esempio il campo utenti fine*/
+
+/*pulsanti di opzione sui campi inizio*/
+.fieldOptions{
+    visibility: hidden;
+    height: 27px;
+    line-height: 27px;
+}
+
+.fieldOptions ul{
+    display: none;
+    position: absolute;
+    left: -95px;
+    top: 95%;
+    z-index: 100;
+    width: 150px;
+}
+
+.fieldOption{
+    z-index: 1;
+    position: absolute;
+    right: 0px;
+    visibility: hidden;  
+    min-width: 5%;
+    height: 25px;
+}
+
+.fieldOption:hover > .fiedlOptionIcon{
+    display: none;
+}
+
+.fieldOption:hover > .fieldMenu{
+    display: block;
+}
+
+.fieldMenu{
+    display: none;
+}
+
+.fieldMenu .btn_scritta{
+    height: 10px;
+    margin-top: 2px;
+}
+/*pulsanti di opzione sui campi fine*/
+
+/*connettore AND o OR tra tabelle linkate in fase di ricerca*/
+.fieldconnector{
+    margin-left: 10px;
+}
+
+
+
+/*DRAG&DROP INIZIO*/
+.connectedSortable{
+    list-style: none;
+    
+}
+
+.connectedSortable li{
+    margin-top: 3px;
+}
+/*DRAG&DROP FINE*/
+
+
+/*ALLEGATI INIZIO*/  
+  
+  .allegati{
+      height: 100%;
+  }
+  
+.file_container{
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.file_container:hover .file_menu_btn{
+    display: block;
+}
+
+.file_menu_btn{
+    display: none;
+}
+  
+
+
+.allegato_selected{
+    //width: 96px !important;
+}
+
+
+
+.minithumb{
+    background-size: 100% 100%;
+}
+
+.thumb{
+    background-size: 100% 100%;
+}
+
+/*icone estensione file inizio*/
+.allegato_tiff{
+    background-image: url("images/allegato_tiff.png");
+}
+
+.allegato_pdf{
+    background-image: url("images/allegato_pdf.png");
+}
+
+.allegato_dwg{
+    background-image: url("images/allegato_dwg.png");
+}
+
+.allegato_doc{
+    background-image: url("images/allegato_doc.png");
+}
+
+.allegato_xls{
+    background-image: url("images/allegato_xls.png");
+}
+
+.allegato_jpg{
+    background-image: url("images/allegato_jpg.png");
+}
+
+.allegato_png{
+    background-image: url("images/allegato_png.png");
+}
+
+.allegato_mp4{
+    background-image: url("images/allegato_mp4.png");
+}
+
+/*icone estensione file fine*/
+
+/*ALLEGATI FINE*/
+
+/*FILE UPLOAD INIZIO*/
+.fileUpload {
+	position: relative;
+	overflow: hidden;
+	margin: 4px;
+}
+.fileUpload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+/*FILE UPLOAD FINE*/
+
+/*VISUALIZZATORE INIZIO*/
+
+/* no visualizzatore*/
+.novisualizzatore{
+    background-image: url("images/novisualizzatore.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/*VISUALIZZATORE FINE*/
+ 
+
+/*LABEL DATI INIZIO*/
+.tablelabel{
+    font-weight: bold !important;
+    line-height: 20px;
+    padding: 0px !important;
+    padding-left: 5px !important;
+}
+
+.tablelabel .fa
+{
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.tablelabel:hover > .btn_fab
+{
+    display: block;
+}
+
+.tablelabel.ui-state-active .btn_fab
+{
+    display: block !important;
+}
+
+.label_table:hover .tablelabel_btn
+{
+    display: block !important;
+}
+
+.label_title{
+    float: left;
+    line-height: 30px;
+}
+
+.label_icona{
+    margin-top: 7px;
+}
+
+.sublabel{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+/*LABEL DATI FINE*/
+
+/*MENU SCHEDA INIZIO*/
+
+/*menu big*/
+.menu_big{
+    padding: 3px;
+    //height: 25px;
+}
+
+.table_container .menu_big{
+    padding: 5px;
+}
+
+/*menu mid*/
+.menu_mid{
+    padding: 2px;
+    min-height: 24px;
+}
+
+.scheda .menu_mid{
+    border: 0px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    width: calc(100% - 4px);
+}
+
+
+
+/*menu bottom*/
+.scheda .menu_bottom{
+    width: calc(100% - 20px);
+}
+
+
+
+/*menu small*/
+.menu_small{
+    height: 18px;
+    padding: 2px;
+    overflow: hidden;
+}
+
+/*MENU SCHEDA FINE*/
+ 
+
+
+/*ESPORTA RISULTATI*/
+#esporta_risultati { 
+    display:none; 
+    padding:20px;
+    width:600px;
+    height: 600px;
+    overflow: scroll;
+}
+
+
+
+
+
+
+/*REPORT INIZIO*/
+.report{
+    width: 100%;
+    height: 90%;
+    float: left;
+    padding: 5px;
+}
+/*REPORT FINE*/
+
+
+
+#segnalazioni_container.popup{
+    width: 40% !important;
+    height: 60% !important;
+    margin: auto;
+    left: 30% !important;
+}
+
+#riepilogo_segnalazioni_container.popup{
+    width: 80% !important;
+    height: 90% !important;
+    margin: auto;
+    left: 10% !important;
+}
+
+#segnalazioni label{
+    display:inline-block;
+    width: 150px;
+    float: left;
+}
+
+#segnalazioni input{
+    width: 100px;
+}
+
+#segnalazioni textArea{
+    width: 400px;
+    height: 100px;
+}
+
+
+.hidden{
+    display: none;
+}
+
+.btn_scritta .fa{
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.fas .far .fab{
+    cursor: pointer;
+    text-align: center;
+    transform: none;
+}
+/*BUTTON - BOTTONI - PULSANTI*/
+
+.btn_fa{
+    height: 16px;
+    width: 25px;
+    font-size: 18px !important;
+    line-height: 14px;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: normal !important;
+    float: left;
+}
+
+
+.btn_scritta{
+    height: 14px;
+    line-height: 14px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 2px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: normal !important;
+    float: left;
+    margin-left: 4px;
+    margin-right: 4px;
+    
+}
+
+.menu_big .btn_scritta{
+    height: 26px;
+    line-height: 26px;
+    float: right;
+}
+
+.menu_mid .btn_scritta{
+    height: 10px;
+    line-height: 10px;
+}
+
+.menu_small .btn_scritta{
+    height: 18px;
+    line-height: 18px;
+    min-width: 18px;
+    padding: 0;
+}
+
+
+
+/*MENU LIST - BUTTON LIST*/
+.menu_list{
+    display: none;
+    position: absolute;
+    top: 95%;
+    z-index: 100;
+    width: 250px;
+    right: 0px;
+}
+
+.menu_list_container{
+    width: 53px;
+    overflow: visible;
+    float: left;
+}
+.menu_list_button{
+    position: relative;
+    z-index: 10;
+}
+
+.menu_list .menu_workspace
+{
+    font-weight: bold;
+    height: 20px;
+    line-height: 20px;
+    text-align: left;
+    margin-top: 10px;
+    font-size: 16px;
+}
+.menu_list .menu_workspace
+{
+    color: black !important;
+}
+.menu_list .menu_archive{
+    text-align: left;
+    height: 28px;
+    font-size: 16px;
+    line-height: 28px;
+}
+.menu_list .menu_archive:hover{
+    background-color: #8db3e2 !important;
+    color: white !important;
+}
+
+.menu_list .menu_archive:hover > .btn_fab
+{
+    display: block !Important;
+}
+
+
+/*SVILUPPO*/
+
+.clearboth{
+    clear: both;
+}
+
+.develop{
+    display: none;  
+}
+
+.displayNone{
+    display: none;
+}
+
+#permessi_record_popup.popup{
+    width: 40% !important;
+    height: 60% !important;
+    margin: auto;
+    left: 30% !important;
+}
+
+::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0.3); 
+    border-radius: 0px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.5);
+}
+
+.menu_btn_container
+{
+    float: left;position: relative;
+    width: 44px;
+    margin-left: 10px;
+    
+}
+.menu_btn_container .menu_btn_description
+{
+    font-size: 12px; 
+    color: #54ace0;
+    display: none;
+    position: absolute;
+    top: -12px;
+    
+    font-weight: bold;
+    overflow: hidden;
+    height: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.menu_btn_container .menu_btn_subdescription
+{
+    font-size: 12px; 
+    color: #54ace0;
+    position: absolute;
+    bottom: -10px;
+    left: 5px;
+    font-weight: bold;
+    text-align: center;
+    padding-left: 5px;
+    width: 100%;
+    height: 20px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.menu_btn_container .btn_fa
+{
+    float: none;
+    width: 44px !important;
+}
+
+.btn_fab {
+    background-color: #54ace0;
+    color: rgb(255, 255, 255);
+    border: medium none;
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 36px;
+    margin: 0;
+    outline: medium none;
+    overflow: hidden;
+    padding: 0 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1) 0s, background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    vertical-align: middle;
+    will-change: box-shadow;
+    border-radius: 50%;
+    box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+    margin: auto;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    
+    
+}
+
+.menu_btn_container .btn_fab
+{
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    line-height: 26px;
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 7px;
+}
+
+.material-icons.md_save
+{
+    font-size: 16px !important;
+    line-height: 25px;
+    
+}
+
+
+.btn_fab_save
+{
+    
+    background-color: green;
+    width: 25px;
+    height: 25px;
+    
+}
+.menu_top .btn_fab
+{
+    background-color: red;
+    width: 30px;
+    height: 30px;
+}
+
+.menu_small .btn_fab
+{
+    background-color: red;
+    width: 25px;
+    height: 25px;
+}
+
+.fieldcontainer .btn_fab
+{
+    background-color: red;
+    width: 26px;
+    height: 26px;
+    float: right;
+}
+
+.tablelabel .btn_fab
+{
+    background-color: red;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    left: 2px;
+    display: none;
+}
+
+.menu_mid .btn_scritta{
+    height: 26px;
+    line-height: 26px;
+}
+
+.fieldValueContainer_view.fieldValueContainer_memo
+{
+    max-height: 150px;
+    overflow: hidden;
+}
+
+.fieldValueContainer_view.fieldValueContainer_memo.showAll
+{
+    max-height: none;
+}
+
+
+
+
+
+.scheda_record .fissi_container
+{
+    
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+   width: 100%;
+}
+
+.scheda_record .fissi_container img
+{
+    height: 120px;
+    width: 120px;
+}
+
+
+.records_linkedmaster .fissi_container
+{
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.2s ease-in-out;
+    border-radius: 2px;
+    margin: auto;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    width: calc(85%);
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.records_linkedmaster .fissi_container:hover
+{
+     box-shadow: 0 1px 20px rgba(0, 0, 0, 0.19), 0 3px 5px rgba(0, 0, 0, 0.23);
+     cursor: pointer;
+}
+
+.records_linkedmaster .fissi_container img
+{
+    height: 80px;
+    width: 80px;
+}
+
+.records_linkedmaster .field
+{
+    color: white;
+    border-bottom: 2px solid #DADADA !important;
+}
+
+.records_linkedmaster .field:focus
+{
+    color: black;
+}
+
+.records_linkedmaster .fieldcontainer .btn_fab{
+    display: none;
+}
+
+.records_linkedmaster .fieldcontainer:hover > .btn_fab
+{
+    display: block;
+}
+
+.rotate{
+    -ms-transform: rotate(7deg); /* IE 9 */
+    -webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
+    transform: rotate(7deg);
+}
+
+.report h3{
+    margin: 0px;
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+.report_table td{
+    padding: 5px;
+}
+.report_table th{
+    padding: 5px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+#navigatore{
+    display: none;
+}
+
+.fc-day-grid-container{
+    overflow: hidden !important;
+}
