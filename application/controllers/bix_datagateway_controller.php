@@ -202,24 +202,31 @@ class Bix_datagateway_controller extends CI_Controller {
         $this->syncdata('user_hubspotdeals','deal','id_hubspot');
     }
     
-    public function syncdata($origin_table='',$destination_tableid='',$sync_key_fieldid)
+    public function syncdata_dealline()
     {
+        $this->syncdata('user_hubspotlineitems','dealline','id_hubspot');
+    }
+    
+    public function syncdata($bixdata_table='')
+    {
+        $sync_table= $this->db_get_value('sys_table', 'sync_table', "id='$bixdata_table'");
+        $sync_field= $this->db_get_value('sys_table', 'sync_field', "id='$bixdata_table'");
         $servername = "10.0.0.23";
         $username = "vtenext";
         $password = "Jbt$5qNbJXg";
         $database= "jdoc";
         $conn = new mysqli($servername, $username, $password, $database);
         $bixdata_fields=array();
-        $rows=$this->db_get('sys_field','*',"tableid='$destination_tableid'");
+        $rows=$this->db_get('sys_field','*',"tableid='$bixdata_table'");
         foreach ($rows as $key => $row) {
             $bixdata_fields[$row['sync_fieldid']]=$row['fieldid'];
         }
         $condition="";
-        if($origin_table=='user_aziende')
+        if($sync_table=='user_aziende')
         {
            $condition="WHERE bexioid is not null"; 
         }
-        $rows=$this->conn_select($conn,"SELECT * FROM $origin_table $condition");
+        $rows=$this->conn_select($conn,"SELECT * FROM $sync_table $condition");
         foreach ($rows as $key => $row) {
             $sync_fields=array();
             foreach ($row as $key => $field) {
@@ -229,20 +236,27 @@ class Bix_datagateway_controller extends CI_Controller {
                 }
             }
             var_dump($sync_fields);
-            $this->sync_record($destination_tableid, $sync_fields,$sync_key_fieldid);
+            $this->sync_record($bixdata_table, $sync_fields,$sync_field);
+        }
+        
+        $sys_table_link_rows=$this->db_get('sys_table_link','*',"tableid='$bixdata_table'");
+        foreach ($sys_table_link_rows as $key => $sys_table_link_row) {
+            $linked_tableid=$sys_table_link_row['tablelinkid'];
+            $this->link_records($bixdata_table,$linked_tableid);
         }
     }
     
-    public function link_record($master_tableid='',$link_tableid='')
+    public function link_records($master_tableid='',$link_tableid='')
     {
         $master_field=$this->db_get_value('sys_field', 'master_field', "tableid='$link_tableid' AND tablelink='$master_tableid'");
         $linked_field=$this->db_get_value('sys_field', 'linked_field', "tableid='$link_tableid' AND tablelink='$master_tableid'");
         $sql="
             UPDATE user_$link_tableid
             INNER join user_$master_tableid ON user_$link_tableid.$linked_field=user_$master_tableid.$master_field
-            SET user_$link_tableid.recordidcompany_=user_$master_tableid.recordid_
+            SET user_$link_tableid.recordid".$master_tableid."_=user_$master_tableid.recordid_
             WHERE true
             ";
+        echo $sql;
         $this->execute_query($sql);
     }
     
