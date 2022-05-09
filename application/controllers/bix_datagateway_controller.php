@@ -351,6 +351,7 @@ class Bix_datagateway_controller extends CI_Controller {
             if($invoice!=null)
             {
                 $fields['lastinvoicedate']=$invoice['date'];
+                echo "$id_hubspot: lastinvoicedate: ".$invoice['date']."<br/>";
             }
             $this->update_record('deal',1,$fields,"recordid_='$recordid_deal'");
             
