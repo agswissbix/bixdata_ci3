@@ -221,7 +221,7 @@ class Bix_datagateway_controller extends CI_Controller {
         foreach ($rows as $key => $row) {
             $bixdata_fields[$row['sync_fieldid']]=$row['fieldid'];
         }
-        $condition="WHERE deal_id='4617503473'";
+        $condition="";
         if($sync_table=='user_aziende')
         {
            $condition="WHERE bexioid is not null"; 
