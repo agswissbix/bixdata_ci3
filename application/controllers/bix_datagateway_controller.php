@@ -347,7 +347,7 @@ class Bix_datagateway_controller extends CI_Controller {
                 echo "$id_hubspot:<br/> Effective margin: $effectivemargin <br/> Deal commission: $deal_commission <br/> Lead commission: $lead_commission<br/>"; 
             }
             
-            $invoice=$this->db_get_row('user_invoice','*',"recordiddeal_='$recordid_deal'");
+            $invoice=$this->db_get_row('user_invoice','*',"recordiddeal_='$recordid_deal'","ORDER BY date desc");
             if($invoice!=null)
             {
                 $fields['lastinvoicedate']=$invoice['date'];
