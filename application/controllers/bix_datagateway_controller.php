@@ -221,7 +221,7 @@ class Bix_datagateway_controller extends CI_Controller {
         foreach ($rows as $key => $row) {
             $bixdata_fields[$row['sync_fieldid']]=$row['fieldid'];
         }
-        $condition="";
+        $condition="WHERE deal_id='4617503473'";
         if($sync_table=='user_aziende')
         {
            $condition="WHERE bexioid is not null"; 
@@ -299,6 +299,61 @@ class Bix_datagateway_controller extends CI_Controller {
         }
         $new_recordid=$new_recordid.$new_recordid_short;;
         return $new_recordid;
+    }
+    
+    
+    public function update_deals()
+    {
+        $servername = "10.0.0.25";
+        $username = "vtenextremote";
+        $password = "DfCEVixXETLf$";
+        $database= "vte_swissbix";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $database);
+        
+        $deals=$this->Sys_model->db_get('user_deal');
+        foreach($deals as $deal)
+        {
+            $fields=array();
+            $id_hubspot=$deal['id_hubspot'];
+            $recordid_deal=$deal['recordid_'];
+            $dealuser=$deal['dealuser'];
+            $leadoriginuser=$deal['leadoriginuser'];
+            $leadoriginuser=strtok($leadoriginuser,  ' ');
+            $expectedmargin=$deal['expectedmargin'];
+            $results=$this->conn_select($conn,"SELECT * FROM vte_potentialscf WHERE cf_p8h_2831='$id_hubspot' ");
+            if(count($results)>0)
+            {
+                $effectivemargin=$results[0]['cf_z00_2896'];
+                $bexioinvoicenr=$results[0]['cf_z00_2899'];
+                $invoice=$this->Sys_model->db_get_row('user_invoice','*',"documentnr='$bexioinvoicenr'");
+                $recordid_invoice=$invoice['recordid_'];
+                $this->execute_query("UPDATE user_invoice SET recordiddeal_='$recordid_deal' WHERE recordid_='$recordid_invoice'");
+                if($this->isempty($effectivemargin))
+                {
+                    $effectivemargin=$expectedmargin;
+                }
+                $fields['effectivemargin']=$effectivemargin;
+                $deal_commission=0;
+                $lead_commission=0;
+                if(($this->isempty($leadoriginuser))||($dealuser==$leadoriginuser))
+                {
+                    $deal_commission=$effectivemargin*0.20;
+                }
+                else
+                {
+                    $deal_commission=$effectivemargin*0.10;
+                    $lead_commission=$effectivemargin*0.10;
+                }
+                $fields['dealcommission']=$deal_commission;
+                $fields['leadcommission']=$lead_commission;
+                $fields['invoicedocumentnr']=$bexioinvoicenr;
+                echo "$id_hubspot:<br/> Effective margin: $effectivemargin <br/> Deal commission: $deal_commission <br/> Lead commission: $lead_commission<br/>"; 
+                $this->update_record('deal',1,$fields,"recordid_='$recordid_deal'");
+            }
+
+        }
     }
     
 }
