@@ -873,7 +873,7 @@ function record_click(el,recordid,tableid,navigatorField,table) {
 // APRI RECORD
 function apri_record(el,tableid,recordid,target,layout,origine,funzione,callback)
 {
-    
+    alert('test');
     console.info('fun: apri_record');
     if (typeof funzione === 'undefined') { funzione = 'scheda'; }
     if((funzione=='inserimento')&&(target=='down'))
@@ -973,7 +973,7 @@ function apri_record(el,tableid,recordid,target,layout,origine,funzione,callback
                     //allargo il div del content in modo da farci stare la nuova scheda
                     var newwidth=$('#ricerca_subcontainer').width()+scheda_record_container_width+50;
                     $('#ricerca_subcontainer').width(newwidth);  
-                    $('#content_ricerca').scrollTo($(scheda_corrente_container),500);
+                    //$('#content_ricerca').scrollTo($(scheda_corrente_container),500);
 
                         var scheda_successiva_container=$(scheda_corrente_container).next();
                         if($(scheda_successiva_container).attr('id')!='scheda_record_container_hidden')
@@ -1165,12 +1165,12 @@ function apri_scheda_record(el,tableid,recordid,target,layout,origine,funzione,c
                 }
                 if(target=='right')
                 {
-                    $('#scheda_dati_ricerca_container').data('displayed',false);
+                    //$('#scheda_dati_ricerca_container').data('displayed',false);
                     //allargo il div del content in modo da farci stare la nuova scheda
-                    var newwidth=$('#ricerca_subcontainer').width()+scheda_record_container_width+50;
-                    $('#ricerca_subcontainer').width(newwidth);  
+                    //var newwidth=$('#ricerca_subcontainer').width()+scheda_record_container_width+50;
+                    //$('#ricerca_subcontainer').width(newwidth);  
                     //$('#content_ricerca').scrollTo($(scheda_corrente_container),500);
-                    $('#scheda_dati_ricerca_container').hide(); 
+                    //$('#scheda_dati_ricerca_container').hide(); 
 
                         var scheda_successiva_container=$(scheda_corrente_container).next();
                         if($(scheda_successiva_container).attr('id')!='scheda_record_container_hidden')
