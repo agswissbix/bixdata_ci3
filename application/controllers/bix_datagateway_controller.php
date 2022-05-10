@@ -359,6 +359,55 @@ class Bix_datagateway_controller extends CI_Controller {
         }
     }
     
+    function set_plannedinvoice($recordid_salesorder)
+    {
+        $sql="DELETE FROM user_salesorderplannedinvoice WHERE recordidsalesorder_='$recordid_salesorder'";
+        $this->execute_query($sql);
+                
+        $salesorder= $this->db_get_row('user_salesorder','*',"recordid_='$recordid_salesorder'");
+        $fields['name']=$salesorder['name'];
+        $fields['totalnet']=$salesorder['totalnet'];
+        $fields['totalgross']=$salesorder['totalgross'];
+        $fields['recordidsalesorder_']=$recordid_salesorder;
+        
+        $datainizio=$salesorder['repetitionstartdate'];
+        $data=$datainizio;
+        $repetition_type=$salesorder['repetitiontype'];
+        if($repetition_type=='Monthly')
+        {
+            for($x=0;$x<24;$x++)
+            {
+                $multi=$x;
+                $data=date('Y-m-d', strtotime($datainizio. ' + '.$multi.' month'));
+                $fields['date']=$data;
+                $fields['id']= $this->Sys_model->generate_seriale('salesorderplannedinvoice', 'id');
+                $this->insert_record('salesorderplannedinvoice',1, $fields);
+            }
+        }
+        if($repetition_type=='Quarterly')
+        {
+            for($x=0;$x<8;$x++)
+            {
+                $multi=$x*3;
+                $data=date('Y-m-d', strtotime($datainizio. ' + '.$multi.' month'));
+                $fields['data']=$data;
+                $fields['id']= $this->Sys_model->generate_seriale('salesorderplannedinvoice', 'id');
+                $this->insert_record('salesorderplannedinvoice',1, $fields);
+            }
+        }
+        if($repetition_type=='Yearly')
+        {
+            for($x=0;$x<2;$x++)
+            {
+                $multi=$x*12;
+                $data=date('Y-m-d', strtotime($datainizio. ' + '.$multi.' month'));
+                $fields['data']=$data;
+                $fields['id']= $this->Sys_model->generate_seriale('salesorderplannedinvoice', 'id');
+                $this->insert_record('salesorderplannedinvoice',1, $fields);
+            }
+        }
+    }
+    
 }
 
 ?>
