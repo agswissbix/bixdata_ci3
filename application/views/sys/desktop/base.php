@@ -264,7 +264,7 @@ $(document).ready(function(){
     ?>
     //content_container_height=screen_height-5;
     content_container_height=window_height-60;
-    scheda_dati_ricerca_container_width=screen_width*0.40-30;
+    scheda_dati_ricerca_container_width=screen_width*0.16;
     scheda_dati_inserimento_container_width=screen_width*0.43-20;
     scheda_record_container_width=screen_width*0.43-20;
     scheda_risultati_allargata_width=screen_width*0.55;
