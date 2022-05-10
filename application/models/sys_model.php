@@ -14220,9 +14220,10 @@ class Sys_model extends CI_Model {
         $settings=$this->add_setting($settings, 'scheda_mostratutti', 'true;false', $currentvalues, 'false',$userid);
         $settings=$this->add_setting($settings, 'popup_layout', 'standard_dati;standard_allegati;allargata', $currentvalues, 'standard_dati',$userid);
         $settings=$this->add_setting($settings, 'popup_width', '30;60;90', $currentvalues, '60',$userid);
-        $settings=$this->add_setting($settings, 'scheda_record_width', '42;48;57;98', $currentvalues, '42',$userid);
+        $settings=$this->add_setting($settings, 'scheda_record_width', '25;42;48;57;98', $currentvalues, '25',$userid);
         $settings=$this->add_setting($settings, 'allargata_dati_width', '', $currentvalues, '50',$userid);
         $settings=$this->add_setting($settings, 'scheda_ricerca_display', 'true;false', $currentvalues, 'true',$userid);
+        $settings=$this->add_setting($settings, 'scheda_ricerca_width', '20;42;', $currentvalues, '20',$userid);
         $settings=$this->add_setting($settings, 'scheda_ricerca_default', 'filtri;ricerche_salvate', $currentvalues, 'filtri',$userid);
         $settings=$this->add_setting($settings, 'ricerca_lockedview', 'true;false', $currentvalues, 'false',$userid);
         
