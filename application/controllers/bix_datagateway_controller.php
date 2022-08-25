@@ -182,11 +182,13 @@ class Bix_datagateway_controller extends CI_Controller {
         $bixdata_row= $this->db_get_row('user_'.$tableid,'recordid_',"$sync_key_fieldid='$origin_key_value'");
         if($bixdata_row!=null)
         {
+            echo "UPDATE RECORD <br/>";
             $recordid=$bixdata_row['recordid_'];
             $this->update_record($tableid,1,$fields,"recordid_='$recordid'");
         }
         else
         {
+            echo "INSERT RECORD <br/>";
             $fields['id']= $this->Sys_model->generate_id($tableid);
             $this->insert_record($tableid,1,$fields);
         }
@@ -211,6 +213,8 @@ class Bix_datagateway_controller extends CI_Controller {
     {
         $sync_table= $this->db_get_value('sys_table', 'sync_table', "id='$bixdata_table'");
         $sync_field= $this->db_get_value('sys_table', 'sync_field', "id='$bixdata_table'");
+        $sync_condition= $this->db_get_value('sys_table', 'sync_condition', "id='$bixdata_table'");
+        $sync_order= $this->db_get_value('sys_table', 'sync_order', "id='$bixdata_table'");
         $servername = "10.0.0.23";
         $username = "vtenext";
         $password = "Jbt$5qNbJXg";
@@ -221,12 +225,26 @@ class Bix_datagateway_controller extends CI_Controller {
         foreach ($rows as $key => $row) {
             $bixdata_fields[$row['sync_fieldid']]=$row['fieldid'];
         }
-        $condition="";
-        if($sync_table=='user_aziende')
+        if($this->isempty($sync_condition))
         {
-           $condition="WHERE bexioid is not null"; 
+            $condition="";
         }
-        $rows=$this->conn_select($conn,"SELECT * FROM $sync_table $condition");
+        else
+        {
+            $condition="WHERE $sync_condition";
+        }
+        
+        if($this->isempty($sync_order))
+        {
+            $order="";
+        }
+        else
+        {
+            $order="ORDER BY $sync_order";
+        }
+        
+  
+        $rows=$this->conn_select($conn,"SELECT * FROM $sync_table $condition $order");
         foreach ($rows as $key => $row) {
             $sync_fields=array();
             foreach ($row as $key => $field) {
@@ -359,13 +377,23 @@ class Bix_datagateway_controller extends CI_Controller {
         }
     }
     
-    function set_plannedinvoice($recordid_salesorder)
+    function set_plannedinvoice_orders()
+    {
+        $orders= $this->db_get('user_salesorder');
+        foreach ($orders as $key => $order) {
+            $recordid_salesorder=$order['recordid_'];
+            $this->set_plannedinvoice_order($recordid_salesorder);
+        }
+    }
+    
+    function set_plannedinvoice_order($recordid_salesorder)
     {
         $sql="DELETE FROM user_salesorderplannedinvoice WHERE recordidsalesorder_='$recordid_salesorder'";
         $this->execute_query($sql);
                 
         $salesorder= $this->db_get_row('user_salesorder','*',"recordid_='$recordid_salesorder'");
-        $fields['name']=$salesorder['name'];
+        echo "Elaborazione ".$salesorder['title']."<br/>";
+        $fields['name']=$salesorder['title'];
         $fields['totalnet']=$salesorder['totalnet'];
         $fields['totalgross']=$salesorder['totalgross'];
         $fields['recordidsalesorder_']=$recordid_salesorder;
@@ -375,7 +403,7 @@ class Bix_datagateway_controller extends CI_Controller {
         $repetition_type=$salesorder['repetitiontype'];
         if($repetition_type=='Monthly')
         {
-            for($x=0;$x<24;$x++)
+            for($x=0;$x<72;$x++)
             {
                 $multi=$x;
                 $data=date('Y-m-d', strtotime($datainizio. ' + '.$multi.' month'));
@@ -386,22 +414,22 @@ class Bix_datagateway_controller extends CI_Controller {
         }
         if($repetition_type=='Quarterly')
         {
-            for($x=0;$x<8;$x++)
+            for($x=0;$x<24;$x++)
             {
                 $multi=$x*3;
                 $data=date('Y-m-d', strtotime($datainizio. ' + '.$multi.' month'));
-                $fields['data']=$data;
+                $fields['date']=$data;
                 $fields['id']= $this->Sys_model->generate_seriale('salesorderplannedinvoice', 'id');
                 $this->insert_record('salesorderplannedinvoice',1, $fields);
             }
         }
         if($repetition_type=='Yearly')
         {
-            for($x=0;$x<2;$x++)
+            for($x=0;$x<6;$x++)
             {
                 $multi=$x*12;
                 $data=date('Y-m-d', strtotime($datainizio. ' + '.$multi.' month'));
-                $fields['data']=$data;
+                $fields['date']=$data;
                 $fields['id']= $this->Sys_model->generate_seriale('salesorderplannedinvoice', 'id');
                 $this->insert_record('salesorderplannedinvoice',1, $fields);
             }
