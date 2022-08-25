@@ -3129,6 +3129,10 @@ GROUP BY user_contratti.recordid_
         {
             $data['calendarioaziendale']='';
         }
+        if(($cliente_id=='swissbix')&&($tableid=='salesorder'))
+        {
+            $data['id_bexio']=$this->Sys_model->db_get_value('user_salesorder','id_bexio',"recordid_='$recordid'");
+        }
         return $this->load->view('sys/desktop/schede/scheda_record',$data, TRUE);
     }
     
@@ -15981,7 +15985,9 @@ GROUP BY user_contratti.recordid_
             $this->Sys_model->update_record('hubspotdeals',1,$fields,"recordid_='$deal_recordid'");
 
         }
-    } 
+    }
+    
+    
     
    
     
