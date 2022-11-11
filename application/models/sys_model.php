@@ -7481,73 +7481,78 @@ class Sys_model extends CI_Model {
             
             
         //CUSTOM SWISSBIX INIZIO
-        if($cliente_id=='Swissbix')
+        if($cliente_id=='swissbix')
         {
-            if($tableid=='dettagliordine')
-            {
-                $saved_record=  $this->db_get_row('user_dettagliordine','*',"recordid_='$saved_recordid'");
-                $prezzounitario=$saved_record['prezzounitario'];
-                $costounitario=$saved_record['costounitario'];
-                $quantita=$saved_record['quantita'];
-                $prezzotot=$prezzounitario*$quantita;
-                $costotot=$costounitario*$quantita;
-                $margineprevisto=$prezzotot-$costotot;
-                $sql="UPDATE user_dettagliordine SET prezzototale=$prezzotot,costototale=$costotot WHERE recordid_='$saved_recordid'";
-                $this->execute_query($sql);
-                
-                $ordine_recordid=$saved_record['recordidordini_'];
-                $ordine_record= $this->db_get_row('user_ordini','*',"recordid_='$ordine_recordid'");
-                $dettagli_ordine= $this->db_get('user_dettagliordine','*',"recordidordini_='$ordine_recordid'");
-                //$prezzo_ordine=0;
-                $prezzo_ordine=$ordine_record['prezzo'];
-                $costo_ordine=0;
-                foreach ($dettagli_ordine as $key => $dettaglio_ordine) {
-                    //$prezzo_ordine=$prezzo_ordine+$dettaglio_ordine['prezzototale'];
-                    $costo_ordine=$costo_ordine+$dettaglio_ordine['costototale'];
-                }
-                $margine_ordine=$prezzo_ordine-$costo_ordine;
-                $sql="UPDATE user_ordini SET costo=$costo_ordine,margine=$margine_ordine WHERE recordid_='$ordine_recordid'";
-                $this->execute_query($sql);
-                
-                // pianificazione
-                $this->calcola_pianificazione($ordine_recordid);
-            }
-            
-            if($tableid=='ordini')
-            {
-                $this->calcola_pianificazione($saved_recordid);
-            }
-        
-            if($tableid=='attivita')
-            {
-                $saved_record=  $this->db_get_row('user_attivita','*',"recordid_='$saved_recordid'");
-                $recordid_progetto=$saved_record['recordidprogetti_'];
-                $lista_attivita_progetto=$this->db_get('user_attivita','*',"recordidprogetti_='$recordid_progetto'");
-                $counter_aperti=0;
-                $counter_chiusi=0;
-                foreach ($lista_attivita_progetto as $key => $attivita_progetto) {
-                    $stato=$attivita_progetto['stato'];
-                    if($stato=='Aperto')
-                    {
-                        $counter_aperti=$counter_aperti+1;
-                    }
-                    if($stato=='Chiuso')
-                    {
-                        $counter_chiusi=$counter_chiusi+1;
-                    }
-                }
-                $sql="
-                    UPDATE user_progetti
-                    SET attivitaaperte=$counter_aperti,attivitachiuse=$counter_chiusi
-                    WHERE recordid_='$recordid_progetto'
-                     ";
-                $this->execute_query($sql);
-            }
+            $this->custom_update_record($tableid,$saved_recordid);
             
         }
         //CUSTOM SWISSBIX FINE
         
         return $return;
+        
+    }
+    
+    function custom_update_record($tableid,$saved_recordid)
+    {
+        if($tableid=='salesorderline')
+        {
+            $saved_record=  $this->db_get_row('user_salesorderline','*',"recordid_='$saved_recordid'");
+            $quantity=$saved_record['quantity'];
+            $unitcost=$saved_record['unitcost'];
+            $price=$saved_record['price'];
+            $fields['cost']=$unitcost*$quantity;
+            if(($unitcost!=null)&&($unitcost!=''))
+            {
+                $fields['margin']=$price-$fields['cost'];
+                $recordid_salesorder=$saved_record['recordidsalesorder_'];
+                $salesorder=$this->db_get_row('user_salesorder','*',"recordid_='$recordid_salesorder'");
+                if($this->isnotempty($salesorder))
+                {
+                    $repetitiontype=$salesorder['repetitiontype'];
+                    $multiplier=1;
+                    if($repetitiontype=='Quarterly')
+                    {
+                        $multiplier=4;
+                    }
+                    if($repetitiontype=='Monthly')
+                    {
+                        $multiplier=12;
+                    }
+                    $fields['marginyearly']=$fields['margin']*$multiplier;
+                }
+            }
+            else
+            {
+                $fields['margin']=null;
+            }
+            $this->update_record('salesorderline', 1, $fields, "recordid_='$saved_recordid'");
+            $this->custom_update_record("salesorder",$recordid_salesorder);
+        }
+            
+        if($tableid=='salesorder')
+        {
+            $saved_record=  $this->db_get_row('user_salesorder','*',"recordid_='$saved_recordid'");
+            $totalprice=$saved_record['totalnet'];
+            $repetitiontype=$saved_record['repetitiontype'];
+            $multiplier=1;
+            if($repetitiontype=='Quarterly')
+            {
+                $multiplier=4;
+            }
+            if($repetitiontype=='Monthly')
+            {
+                $multiplier=12;
+            }
+            $salesorderlines= $this->db_get('user_salesorderline', "*", "recordidsalesorder_='$saved_recordid'");
+            $totalcost=0;
+            foreach ($salesorderlines as $key => $salesorderline) {
+                $totalcost=$totalcost+$salesorderline['cost'];
+            }
+            $fields['totalcost']=$totalcost;
+            $fields['totalmargin']=$totalprice-$totalcost;
+            $fields['totalmarginyearly']=$fields['totalmargin']*$multiplier;
+            $this->update_record('salesorder', 1, $fields, "recordid_='$saved_recordid'");
+        }
         
     }
     
