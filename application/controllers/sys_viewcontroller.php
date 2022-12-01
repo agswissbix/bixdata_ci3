@@ -15987,6 +15987,13 @@ GROUP BY user_contratti.recordid_
         }
     }
     
+    public function get_records()
+    {
+        $post=$_POST;
+        $post['qwe']='asd';
+        echo json_encode($post);
+    }
+    
     
     
    
