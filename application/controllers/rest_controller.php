@@ -17,12 +17,19 @@ class Rest_controller extends CI_Controller {
     {
         $post=$_POST;
         $table=$post['table'];
+        $searchTerm=$post['searchTerm'];
+        $where='TRUE';
         
         $columns=  $this->Sys_model->get_results_columns($table, 1);
         $return['columns']= $columns; 
         $sql="";
+        $summary=array();
+        $sum_fields='';
+        $sum_query='';
         foreach ($columns as $key => $column) {
-            if(($column['id']!='recordid_')&&($column['id']!='recordstatus_')&&($column['id']!='recordcss_'))
+            $column_id=$column['id'];
+            
+            if(($column_id!='recordid_')&&($column_id!='recordstatus_')&&($column_id!='recordcss_'))
             {
                 if($sql=='')
                 {
@@ -32,10 +39,33 @@ class Rest_controller extends CI_Controller {
                 {
                     $sql=$sql.",";
                 }
-                $sql=$sql.$column['id'];
+                $sql=$sql.$column_id;
+                if($where=='TRUE')
+                {
+                    $where=$where." AND ($column_id like '%$searchTerm%'";
+                }
+                else
+                {
+                    $where=$where." OR $column_id like '%$searchTerm%'";
+                }
+                
+            }
+            
+            if($column['fieldtypeid']=='Numero')
+            {
+                if($sum_fields!='')
+                {
+                    $sum_fields=$sum_fields.",";
+                }
+                $sum_fields=$sum_fields." SUM($column_id)";
             }
         }
-        $sql=$sql." FROM user_$table WHERE true AND (recordstatus_ is null OR recordstatus_!='temp') ) AS risultati LEFT JOIN user_".$table."_owner ON risultati.recordid_=user_".$table."_owner.recordid_ where ownerid_ is null OR ownerid_=1 ";
+        if($sum_fields!='')
+        {
+            $sum_query="SELECT $sum_fields FROM user_$table";
+        }
+        $where=$where.")";
+        $sql=$sql." FROM user_$table WHERE $where AND (recordstatus_ is null OR recordstatus_!='temp') ) AS risultati LEFT JOIN user_".$table."_owner ON risultati.recordid_=user_".$table."_owner.recordid_ where ownerid_ is null OR ownerid_=1 ";
         $return['records']=$this->Sys_model->get_records($table,$sql,'recordid_','desc',0,50);
         echo json_encode($return);
     }
