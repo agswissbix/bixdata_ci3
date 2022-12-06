@@ -371,6 +371,52 @@ $(document).ready(function(){
                         }
                         ?>
                     
+                        
+                        <?php
+                        if($tableid=='salesorder')
+                        {
+                        ?>
+                        <div id="smartsearch" class="blocco scheda_container scheda" style="padding: 0px;height: 30px;width: calc(100% - 30px);margin-bottom: 0px;padding-left: 20;">
+                            <form>
+                                <input type="hidden" name="tableid" value="<?=$tableid?>">
+                                <input type="hidden" name="tables[salesorder][type]" value="master">
+                                <input type="hidden" name="tables[salesorder][fields][documentnr][type]" value="Parola">
+                                <span style="float: left;margin-right: 10px;margin-left: 10px;font-weight: bold">Document nr</span>
+                                <input class="field fieldtoblur fieldInput fieldRange fieldValue0 ricerca first  " style="border: 1px solid #dedede !important;width: 100px;" id="tables-dipendenti-search-t_1-fields-id-f_01520519577-value-0" name="tables[salesorder][fields][documentnr][value][0]" type="text" placeholder="" value="" maxlength="254" tabindex="" data-last_field="" data-lastval="">
+                                
+                                
+                                <input type="hidden" name="tables[company][type]" value="linkedmaster">
+                                <input type="hidden" name="tables[company][fields][companyname][type]" value="Parola">
+                                <span style="float: left;margin-right: 10px;margin-left: 10px;font-weight: bold">Company</span>
+                                <input class="field fieldtoblur fieldInput fieldRange fieldValue0 ricerca first  " style="border: 1px solid #dedede !important;width: 100px;" id="tables-dipendenti-search-t_1-fields-id-f_01520519577-value-0" name="tables[company][fields][companyname][value][0]" type="text" placeholder="" value="" maxlength="254" tabindex="" data-last_field="" data-lastval="">
+                                
+                                <input type="hidden" name="tableid" value="<?=$tableid?>">
+                                <input type="hidden" name="tables[salesorder][type]" value="master">
+                                <input type="hidden" name="tables[salesorder][fields][sector][type]" value="Parola">
+                                <span style="float: left;margin-right: 10px;margin-left: 10px;font-weight: bold">Sector</span>
+                                <input class="field fieldtoblur fieldInput fieldRange fieldValue0 ricerca first  " style="border: 1px solid #dedede !important;width: 100px;" id="tables-dipendenti-search-t_1-fields-id-f_01520519577-value-0" name="tables[salesorder][fields][sector][value][0]" type="text" placeholder="" value="" maxlength="254" tabindex="" data-last_field="" data-lastval="">
+                                
+                                <input type="hidden" name="tableid" value="<?=$tableid?>">
+                                <input type="hidden" name="tables[salesorder][type]" value="master">
+                                <input type="hidden" name="tables[salesorder][fields][status][type]" value="Parola">
+                                <span style="float: left;margin-right: 10px;margin-left: 10px;font-weight: bold">Status</span>
+                                <input class="field fieldtoblur fieldInput fieldRange fieldValue0 ricerca first  " style="border: 1px solid #dedede !important;width: 100px;" id="tables-dipendenti-search-t_1-fields-id-f_01520519577-value-0" name="tables[salesorder][fields][status][value][0]" type="text" placeholder="" value="" maxlength="254" tabindex="" data-last_field="" data-lastval="">
+                                
+                                <input type="hidden" name="tables[salesorderline][type]" value="linked">
+                                <input type="hidden" name="tables[salesorderline][fields][name][type]" value="Parola">
+                                <span style="float: left;margin-right: 10px;margin-left: 10px;font-weight: bold">Product description</span>
+                                <input class="field fieldtoblur fieldInput fieldRange fieldValue0 ricerca first  " style="border: 1px solid #dedede !important;width: 100px;" id="tables-dipendenti-search-t_1-fields-id-f_01520519577-value-0" name="tables[salesorderline][fields][name][value][0]" type="text" placeholder="" value="" maxlength="254" tabindex="" data-last_field="" data-lastval="">
+                                
+                                
+                                <div id="btn_smartsearch_cerca" class="btn_scritta" style="float: left;margin-left: 20px;" onclick="smartsearch(this)">Cerca</div>
+                            </form>
+                        </div>
+                        <?php
+                        }
+                        ?>
+                    
+                    
+                    
                         <?php
                         if($tableid=='presenzemensili')
                         {
