@@ -10619,6 +10619,11 @@ function custom3p_prepara_notifica_email(el,recordid,funzione)
     } ); 
 }
 
+function custom_swissbix_salesorder_apribexio(el,id_bexio)
+{
+    window.open("https://office.bexio.com/index.php/kb_order/show/id/"+id_bexio);
+}
+
 
 //custom 3p
 function apri_jobdescription(el,recordid_richiestaricercapersonale)
