@@ -67,10 +67,10 @@ $db['bix_mysql']['username'] = 'vtenext';
 $db['bix_mysql']['password'] = 'Jbt$5qNbJXg';
 $db['bix_mysql']['dbdriver'] = 'mysqli';
 
-$db['bixdata']['hostname'] = 'localhost';
+$db['bixdata']['hostname'] = '10.0.0.23';
 $db['bixdata']['database'] = 'bixdata';
-$db['bixdata']['username'] = 'root';
-$db['bixdata']['password'] = '';
+$db['bixdata']['username'] = 'vtenext';
+$db['bixdata']['password'] = 'Jbt$5qNbJXg';
 $db['bixdata']['dbdriver'] = 'mysqli';
 
 $db['default_sqlserver']['hostname'] = 'localhost';

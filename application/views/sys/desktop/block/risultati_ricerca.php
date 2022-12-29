@@ -412,9 +412,9 @@ function stampa_elencoBAK(el)
                 }
                 ?>
 
-                <li style="width: 20%;" onclick="reload_fields(this,'<?=$tableid?>')"><a style="display: block;width: 100%" href="<?=$div_target?>">Tutti</a></li>
+                <li style="width: 20%;" onclick=""><a style="display: block;width: 100%" href="<?=$div_target?>">Tutti</a></li>
                 <?php
-                if($table_settings['risultati_showreport']=='true')
+                if(true)
                 {
                 ?>
                     <li style="width: 20%;"><a style="display: block;width: 100%" href="#risultati_ricerca_report">Report</a></li>
@@ -456,7 +456,7 @@ function stampa_elencoBAK(el)
             ?>
            
             <?php
-            if($table_settings['risultati_showreport']=='true')
+            if(true)
             {
             ?>
             <div id="risultati_ricerca_report" class="reports_relativi_container" style="width: 100%;height: 100%;overflow: scroll">

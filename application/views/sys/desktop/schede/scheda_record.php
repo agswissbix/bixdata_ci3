@@ -450,6 +450,15 @@ $( ".menu_list_button" ).hover(
                          <?php
                         }
                         ?>
+                            
+                        <?php            
+                        if(($data['settings']['cliente_id']=='swissbix')&&($tableid=='salesorder'))
+                        {
+                        ?>
+                            <li><a onclick="custom_swissbix_salesorder_apribexio(this,'<?=$id_bexio?>')">Apri in bexio</a></li>
+                         <?php
+                        }
+                        ?>
                     </ul>
             </div>
             

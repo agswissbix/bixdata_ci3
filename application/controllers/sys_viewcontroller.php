@@ -15995,6 +15995,19 @@ GROUP BY user_contratti.recordid_
     }
     
     
+    public function test_pagina1()
+    {
+        $this->load->view('test_pagina1');
+    }
+    
+    public function get_pagina2()
+    {
+        echo 'test';
+         $this->load->view('test_pagina2');
+    }
+    
+    
+    
     
    
     

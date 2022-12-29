@@ -190,9 +190,253 @@ class Bix_datagateway_controller extends CI_Controller {
         {
             echo "INSERT RECORD <br/>";
             $fields['id']= $this->Sys_model->generate_id($tableid);
-            $this->insert_record($tableid,1,$fields);
+            $recordid=$this->insert_record($tableid,1,$fields);
         }
+        
+        if($tableid=='salesorderline')
+        {
+            $this->update_salesorderline($recordid);
+        }
+        if($tableid=='invoiceline')
+        {
+            $this->update_invoiceline($recordid);
+        }
+        
     }
+    
+    public function update_salesorderline($recordid_salesorderline)
+    {
+        ini_set('max_execution_time', 3600);
+        echo "update_salesorderline: $recordid_salesorderline";
+        $updated_field=array();
+        $salesorderline= $this->db_get_row('user_salesorderline','*',"recordid_=$recordid_salesorderline");
+        $recordid_salesorder=$salesorderline['recordidsalesorder_'];
+        $salesorder=$this->db_get_row('user_salesorder','*',"recordid_='$recordid_salesorder'");
+        
+        $repetition_type=$salesorder['repetitiontype'];
+        $recordid_company=$salesorder['recordidcompany_'];
+        
+        $updated_field['repetitiontype']=$repetition_type;
+        $updated_field['recordidcompany_']=$recordid_company;
+        
+        if(($repetition_type=='Monthly'))
+        {
+            $updated_field['total_net_yearly']=$salesorderline['price']*12;
+        }
+        if(($repetition_type=='Bimonthly'))
+        {
+            $updated_field['total_net_yearly']=$salesorderline['price']*6;
+        }
+        if(($repetition_type=='Quarterly'))
+        {
+            $updated_field['total_net_yearly']=$salesorderline['price']*4;
+        }
+        if(($repetition_type=='Yearly'))
+        {
+            $updated_field['total_net_yearly']=$salesorderline['price'];
+        }
+        if(($repetition_type=='Biennial'))
+        {
+            $updated_field['total_net_yearly']=$salesorderline['price']/2;
+        }
+        if(($repetition_type=='Triennial'))
+        {
+            $updated_field['total_net_yearly']=$salesorderline['price']/2;
+        }
+        
+        $account=$salesorderline['account'];
+        $updated_field['accountgroup']='Altro';
+        if($account=='Consulenze IT')
+        {
+            $updated_field['accountgroup']='Assistenza ICT'; 
+        }
+        if($account=='Consulenze Software')
+        {
+            $updated_field['accountgroup']='Software'; 
+        }
+        if($account=='Ricavi da Noleggio Hardware')
+        {
+            $updated_field['accountgroup']='Hardware e Software'; 
+        }
+        if($account=='Ricavi da Noleggio Stampanti')
+        {
+            $updated_field['accountgroup']='Printing'; 
+        }
+        if($account=='Vendita Assistenza Prioritaria')
+        {
+            $updated_field['accountgroup']='ICT'; 
+        }
+        if($account=='Vendita BE ALL Antivirus')
+        {
+            $updated_field['accountgroup']='BE ALL'; 
+        }
+        if($account=='Vendita BE ALL Assistance (All-In)')
+        {
+            $updated_field['accountgroup']='BE ALL'; 
+        }
+        if($account=='Vendita BE ALL Backup')
+        {
+            $updated_field['accountgroup']='BE ALL'; 
+        }
+        if($account=='Vendita DCS e Servizi Cloud')
+        {
+            $updated_field['accountgroup']='DCS e Cloud'; 
+        }
+        if($account=='Vendita Hardware e Software')
+        {
+            $updated_field['accountgroup']='Hardware e Software'; 
+        }
+        if($account=='Vendita Licenze ADIUTO')
+        {
+            $updated_field['accountgroup']='Software'; 
+        }
+        if($account=='Vendita PBX Assistenza')
+        {
+            $updated_field['accountgroup']='PBX'; 
+        }
+        if($account=='Vendita PBX Maintenance')
+        {
+            $updated_field['accountgroup']='PBX'; 
+        }
+        if($account=='Vendita Prodotti')
+        {
+            $updated_field['accountgroup']='Hardware e Software'; 
+        }
+        if($account=='Vendita Servizi')
+        {
+            $updated_field['accountgroup']='Hardware e Software'; 
+        }
+        if($account=='Vendita Servizi BeAll Monitoring Only')
+        {
+            $updated_field['accountgroup']='BE ALL'; 
+        }
+        if($account=='Vendita Servizi di Assistenza')
+        {
+            $updated_field['accountgroup']='ICT'; 
+        }
+        if($account=='Vendita Servizi Hosting')
+        {
+            $updated_field['accountgroup']='Hosting'; 
+        }
+        if($account=='Vendita Sviluppo Software')
+        {
+            $updated_field['accountgroup']='Software'; 
+        }
+        if($account=='Vendita Telefonia')
+        {
+            $updated_field['accountgroup']='Telefonia'; 
+        }
+        
+        
+        
+        var_dump($updated_field);
+        $this->update_record('salesorderline',1,$updated_field,"recordid_='$recordid_salesorderline'");
+    }
+    
+    public function update_invoiceline($recordid_invoiceline)
+    {
+        ini_set('max_execution_time', 3600);
+        echo "update_invoiceline: $recordid_invoiceline";
+        $updated_field=array();
+        $invoiceline= $this->db_get_row('user_invoiceline','*',"recordid_=$recordid_invoiceline");
+        $recordid_invoice=$invoiceline['recordidinvoice_'];
+        $invoice=$this->db_get_row('user_invoice','*',"recordid_='$recordid_invoice'");
+        
+        $recordid_company=$invoice['recordidcompany_'];
+        
+        $updated_field['recordidcompany_']=$recordid_company;
+        
+               
+        $account=$invoiceline['account'];
+        $updated_field['accountgroup']='Altro';
+        if($account=='Consulenze IT')
+        {
+            $updated_field['accountgroup']='Assistenza ICT'; 
+        }
+        if($account=='Consulenze Software')
+        {
+            $updated_field['accountgroup']='Software'; 
+        }
+        if($account=='Ricavi da Noleggio Hardware')
+        {
+            $updated_field['accountgroup']='Hardware e Software'; 
+        }
+        if($account=='Ricavi da Noleggio Stampanti')
+        {
+            $updated_field['accountgroup']='Printing'; 
+        }
+        if($account=='Vendita Assistenza Prioritaria')
+        {
+            $updated_field['accountgroup']='ICT'; 
+        }
+        if($account=='Vendita BE ALL Antivirus')
+        {
+            $updated_field['accountgroup']='BE ALL'; 
+        }
+        if($account=='Vendita BE ALL Assistance (All-In)')
+        {
+            $updated_field['accountgroup']='BE ALL'; 
+        }
+        if($account=='Vendita BE ALL Backup')
+        {
+            $updated_field['accountgroup']='BE ALL'; 
+        }
+        if($account=='Vendita DCS e Servizi Cloud')
+        {
+            $updated_field['accountgroup']='DCS e Cloud'; 
+        }
+        if($account=='Vendita Hardware e Software')
+        {
+            $updated_field['accountgroup']='Hardware e Software'; 
+        }
+        if($account=='Vendita Licenze ADIUTO')
+        {
+            $updated_field['accountgroup']='Software'; 
+        }
+        if($account=='Vendita PBX Assistenza')
+        {
+            $updated_field['accountgroup']='PBX'; 
+        }
+        if($account=='Vendita PBX Maintenance')
+        {
+            $updated_field['accountgroup']='PBX'; 
+        }
+        if($account=='Vendita Prodotti')
+        {
+            $updated_field['accountgroup']='Hardware e Software'; 
+        }
+        if($account=='Vendita Servizi')
+        {
+            $updated_field['accountgroup']='Hardware e Software'; 
+        }
+        if($account=='Vendita Servizi BeAll Monitoring Only')
+        {
+            $updated_field['accountgroup']='BE ALL'; 
+        }
+        if($account=='Vendita Servizi di Assistenza')
+        {
+            $updated_field['accountgroup']='ICT'; 
+        }
+        if($account=='Vendita Servizi Hosting')
+        {
+            $updated_field['accountgroup']='Hosting'; 
+        }
+        if($account=='Vendita Sviluppo Software')
+        {
+            $updated_field['accountgroup']='Software'; 
+        }
+        if($account=='Vendita Telefonia')
+        {
+            $updated_field['accountgroup']='Telefonia'; 
+        }
+        
+        
+        
+        var_dump($updated_field);
+        $this->update_record('invoiceline',1,$updated_field,"recordid_='$recordid_invoiceline'");
+    }
+    
+    
     
     public function syncdata_company()
     {
@@ -255,6 +499,8 @@ class Bix_datagateway_controller extends CI_Controller {
             }
             var_dump($sync_fields);
             $this->sync_record($bixdata_table, $sync_fields,$sync_field);
+            
+            
         }
         
         $sys_table_link_rows=$this->db_get('sys_table_link','*',"tableid='$bixdata_table'");
@@ -379,7 +625,10 @@ class Bix_datagateway_controller extends CI_Controller {
     
     function set_plannedinvoice_orders()
     {
-        $orders= $this->db_get('user_salesorder');
+        $sql="DELETE FROM user_salesorderplannedinvoice";
+        $this->execute_query($sql);
+        
+        $orders= $this->db_get('user_salesorder','*',"repetitiontype is not null and repetitiontype!=''");
         foreach ($orders as $key => $order) {
             $recordid_salesorder=$order['recordid_'];
             $this->set_plannedinvoice_order($recordid_salesorder);
@@ -388,22 +637,27 @@ class Bix_datagateway_controller extends CI_Controller {
     
     function set_plannedinvoice_order($recordid_salesorder)
     {
-        $sql="DELETE FROM user_salesorderplannedinvoice WHERE recordidsalesorder_='$recordid_salesorder'";
-        $this->execute_query($sql);
+        //$sql="DELETE FROM user_salesorderplannedinvoice WHERE recordidsalesorder_='$recordid_salesorder'";
+        //$this->execute_query($sql);
                 
         $salesorder= $this->db_get_row('user_salesorder','*',"recordid_='$recordid_salesorder'");
         echo "Elaborazione ".$salesorder['title']."<br/>";
         $fields['name']=$salesorder['title'];
         $fields['totalnet']=$salesorder['totalnet'];
         $fields['totalgross']=$salesorder['totalgross'];
+        $fields['sector']=$salesorder['sector'];
+        $fields['status']=$salesorder['status'];
+        $fields['documentnr']=$salesorder['documentnr'];
         $fields['recordidsalesorder_']=$recordid_salesorder;
+        $fields['recordidcompany_']=$salesorder['recordidcompany_'];
         
         $datainizio=$salesorder['repetitionstartdate'];
+        echo "Data inizio ordine: $datainizio <br/>";
         $data=$datainizio;
         $repetition_type=$salesorder['repetitiontype'];
         if($repetition_type=='Monthly')
         {
-            for($x=0;$x<72;$x++)
+            for($x=0;$x<120;$x++)
             {
                 $multi=$x;
                 $data=date('Y-m-d', strtotime($datainizio. ' + '.$multi.' month'));
@@ -412,9 +666,20 @@ class Bix_datagateway_controller extends CI_Controller {
                 $this->insert_record('salesorderplannedinvoice',1, $fields);
             }
         }
+        if($repetition_type=='Bimonthly')
+        {
+            for($x=0;$x<60;$x++)
+            {
+                $multi=$x*2;
+                $data=date('Y-m-d', strtotime($datainizio. ' + '.$multi.' month'));
+                $fields['date']=$data;
+                $fields['id']= $this->Sys_model->generate_seriale('salesorderplannedinvoice', 'id');
+                $this->insert_record('salesorderplannedinvoice',1, $fields);
+            }
+        }
         if($repetition_type=='Quarterly')
         {
-            for($x=0;$x<24;$x++)
+            for($x=0;$x<40;$x++)
             {
                 $multi=$x*3;
                 $data=date('Y-m-d', strtotime($datainizio. ' + '.$multi.' month'));
@@ -425,9 +690,31 @@ class Bix_datagateway_controller extends CI_Controller {
         }
         if($repetition_type=='Yearly')
         {
-            for($x=0;$x<6;$x++)
+            for($x=0;$x<10;$x++)
             {
                 $multi=$x*12;
+                $data=date('Y-m-d', strtotime($datainizio. ' + '.$multi.' month'));
+                $fields['date']=$data;
+                $fields['id']= $this->Sys_model->generate_seriale('salesorderplannedinvoice', 'id');
+                $this->insert_record('salesorderplannedinvoice',1, $fields);
+            }
+        }
+        if($repetition_type=='Biennial')
+        {
+            for($x=0;$x<5;$x++)
+            {
+                $multi=$x*24;
+                $data=date('Y-m-d', strtotime($datainizio. ' + '.$multi.' month'));
+                $fields['date']=$data;
+                $fields['id']= $this->Sys_model->generate_seriale('salesorderplannedinvoice', 'id');
+                $this->insert_record('salesorderplannedinvoice',1, $fields);
+            }
+        }
+        if($repetition_type=='Triennial')
+        {
+            for($x=0;$x<3;$x++)
+            {
+                $multi=$x*36;
                 $data=date('Y-m-d', strtotime($datainizio. ' + '.$multi.' month'));
                 $fields['date']=$data;
                 $fields['id']= $this->Sys_model->generate_seriale('salesorderplannedinvoice', 'id');

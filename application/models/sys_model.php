@@ -13640,7 +13640,7 @@ class Sys_model extends CI_Model {
             
             if($groupby!='')
             {
-                $reportquery_select="SELECT $groupby,sum($fieldid) as $fieldid";
+                $reportquery_select="SELECT $groupby,ROUND(sum($fieldid)) as $fieldid";
                 
                 $reportquery_groupby=" GROUP BY ".$groupby;
                 

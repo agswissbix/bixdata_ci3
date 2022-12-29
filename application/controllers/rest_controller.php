@@ -66,7 +66,7 @@ class Rest_controller extends CI_Controller {
         }
         $where=$where.")";
         $sql=$sql." FROM user_$table WHERE $where AND (recordstatus_ is null OR recordstatus_!='temp') ) AS risultati LEFT JOIN user_".$table."_owner ON risultati.recordid_=user_".$table."_owner.recordid_ where ownerid_ is null OR ownerid_=1 ";
-        $return['records']=$this->Sys_model->get_records($table,$sql,'recordid_','desc',0,50);
+        $return['records']=$this->Sys_model->get_records($table,$sql,'recordid_','desc',0,1);
         echo json_encode($return);
     }
     
@@ -84,7 +84,9 @@ class Rest_controller extends CI_Controller {
     
     public function get_record_fields()
     {
-        $fissi=$this->Sys_model->get_fields_table('company','Dati', '00000000000000000000000000000500');
+        $post=$_POST;
+        $recordid=$post['recordid'];
+        $fissi=$this->Sys_model->get_fields_table('deal','Dati', $recordid);
         echo json_encode($fissi);
     }
 }
